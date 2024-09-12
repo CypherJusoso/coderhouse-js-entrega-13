@@ -15,6 +15,7 @@
 
     <div id="formContainer">
         <form>
+            <div id="productsContainer">
             <div class="product">
             <label for="ps4">Playstation 4 US$ 250 
                 <input type="checkbox" value="250" id="ps4" name="ps4">
@@ -45,9 +46,21 @@
                 <input type="checkbox" value="500" id="switch" name="switch">
             </label><br>
         </div>
-            <button id="calcBtn">Calcular</button><br>
-        </form>
-        <p id="result"></p>
+    </div>
+    <p id="result"></p>
+        <button id="calcBtn" type="button">Calcular</button><br><br>
+        <div id="createProductContainer">
+            <label for="productName">Nombre del Producto:
+                <input type="text" id="productName" placeholder="Nombre del Producto...">
+            </label><br>
+            <label for="productPrice">Precio del Producto:
+                <input type="number" id="productPrice" placeholder="Precio del Producto...">
+            </label><br>
+            <button id="createBtn" type="button">Crear</button>    
+
+        </div>
+    </form>
+        
     </div>
     <script src="main.js"></script>
 </body>
