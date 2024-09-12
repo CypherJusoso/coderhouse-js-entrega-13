@@ -6,6 +6,8 @@ const checkWiiU = document.getElementById("wiiu");
 const checkSwitch = document.getElementById("switch");
 const calcBtn = document.getElementById("calcBtn");
 const result = document.getElementById("result");
+const searchInput = document.getElementById("search");
+
 let total = 0;
 
 const checkArray = [checkPs4
@@ -32,4 +34,23 @@ const checkArray = [checkPs4
     };
 
     calcBtn.addEventListener("click", calcularTotal);
+
+//Filtrado de productos.
+
+const buscarProducto = (event) =>{
+const searchTerm = event.target.value.toLowerCase();
+const productos = document.querySelectorAll(".product");
+
+productos.forEach((producto) =>{
+
+    const label = producto.querySelector("label").textContent.toLocaleLowerCase();
+    if (label.includes(searchTerm)){
+        producto.style.display = "block";
+    }else{
+        producto.style.display = "none";
+    }
+});
+};
+
+searchInput.addEventListener("input", buscarProducto);
 
