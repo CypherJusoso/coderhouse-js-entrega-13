@@ -108,7 +108,7 @@ result.textContent = "";
 const alertDiv = document.createElement("div");
     alertDiv.classList.add("alert", "alert-danger", "alert-dismissible", "fade", "show");
     alertDiv.setAttribute("role","alert");
-    alertDiv.innerHTML = `Producto "${userProduct.name} eliminado.
+    alertDiv.innerHTML = `Producto "${userProduct.name}" eliminado con exito.
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>`;
 
     alertContainer.appendChild(alertDiv);
@@ -178,7 +178,7 @@ const createProduct = () => {
     const alertDiv = document.createElement("div");
     alertDiv.classList.add("alert", "alert-success", "alert-dismissible", "fade", "show");
     alertDiv.setAttribute("role","alert");
-    alertDiv.innerHTML = `Producto "${userProduct.name} creado con exito.
+    alertDiv.innerHTML = `Producto "${userProduct.name}" creado con exito.
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>`;
 
     alertContainer.appendChild(alertDiv);
