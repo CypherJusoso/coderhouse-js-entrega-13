@@ -15,39 +15,8 @@
 
     <div id="formContainer">
         <form>
-            <div id="productsContainer">
-            <div class="product">
-            <label for="ps4">Playstation 4 US$ 250 
-                <input type="checkbox" value="250" id="ps4" name="ps4">
-            </label><br>
-        </div>
-        <div class="product">
-            <label for="ps5">Playstation 5 US$ 500 
-                <input type="checkbox" value="500" id="ps5" name="ps5">
-            </label><br>
-        </div>
-        <div class="product">
-            <label for="xboxone">Xbox One US$ 250 
-                <input type="checkbox" value="250" id="xboxone" name="xboxone">
-            </label><br>
-        </div>
-        <div class="product">
-            <label for="xboxx">Xbox Series X US$ 500
-                <input type="checkbox" value="500" id="xboxx" name="xboxx">
-            </label><br>
-        </div>
-        <div class="product">
-            <label for="wiiu">Wii U US$ 250 
-                <input type="checkbox" value="250" id="wiiu" name="wiiu">
-            </label><br>
-        </div>
-        <div class="product">
-            <label for="switch">Nintendo Switch US$ 500 
-                <input type="checkbox" value="500" id="switch" name="switch">
-            </label><br>
-        </div>
-    </div>
-    <p id="result"></p>
+            <div id="productsContainer"></div>
+        <p id="result"></p>
         <button id="calcBtn" type="button">Calcular</button><br><br>
         <div id="createProductContainer">
             <label for="productName">Nombre del Producto:
@@ -56,8 +25,9 @@
             <label for="productPrice">Precio del Producto:
                 <input type="number" id="productPrice" placeholder="Precio del Producto...">
             </label><br>
+            <p id="objectError"></p>
             <button id="createBtn" type="button">Crear</button>    
-
+            <button id="resetBtn" type="button">Reiniciar</button>
         </div>
     </form>
         
