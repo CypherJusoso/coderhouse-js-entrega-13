@@ -7,6 +7,7 @@ const productPrice = document.getElementById("productPrice");
 const productsContainer = document.getElementById("productsContainer");
 const resetBtn = document.getElementById("resetBtn");
 const objectError = document.getElementById("objectError");
+const alertContainer = document.getElementById("alertContainer");
 let total = 0;
 
 const checkArray = [];
@@ -65,26 +66,28 @@ const initialProducts = [
 ];
 const generateProduct = (userProduct) =>{
 const productDiv = document.createElement("div");
-productDiv.setAttribute("class", "product");
+productDiv.setAttribute("class", "product form-check mb-3");
 productDiv.setAttribute("id", userProduct.name + "-div")
 
 const productLabel = document.createElement("label");
 productLabel.setAttribute("for", userProduct.name);
+productLabel.classList.add("form-check-label");
 productLabel.innerHTML = `${userProduct.name} US$ ${userProduct.price}`;
 
 const productCheckbox = document.createElement("input");
 productCheckbox.setAttribute("type", "checkbox");
 productCheckbox.setAttribute("id", userProduct.name);
 productCheckbox.setAttribute("value", userProduct.price);
+productCheckbox.classList.add("form-check-input")
 
 const deleteBtn = document.createElement("button");
 deleteBtn.setAttribute("type", "button");
 deleteBtn.setAttribute("id", userProduct.name + "-deleteBtn")
-deleteBtn.setAttribute("class", "dangerBtn");
-deleteBtn.innerHTML = "Delete";
+deleteBtn.classList.add("btn", "btn-danger", "btn-sm", "ms-2");
+deleteBtn.innerHTML = "Eliminar";
 
-productDiv.appendChild(productLabel);
 productDiv.appendChild(productCheckbox);
+productDiv.appendChild(productLabel);
 productDiv.appendChild(deleteBtn);
 productsContainer.appendChild(productDiv);
 
@@ -101,8 +104,16 @@ productDiv.remove();
 checkArray.splice(checkArray.indexOf(productCheckbox), 1);
 
 result.textContent = "";
+
+const alertDiv = document.createElement("div");
+    alertDiv.classList.add("alert", "alert-danger", "alert-dismissible", "fade", "show");
+    alertDiv.setAttribute("role","alert");
+    alertDiv.innerHTML = `Producto "${userProduct.name} eliminado.
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>`;
+
+    alertContainer.appendChild(alertDiv);
 });
-}
+};
 const preConstruct = () =>{
     
     let products = localStorageProductsLoad();
@@ -127,8 +138,14 @@ const reset = () =>{
     products.forEach((product) =>{
         generateProduct(product);
     });
+    const alertDiv = document.createElement("div");
+    alertDiv.classList.add("alert", "alert-warning", "alert-dismissible", "fade", "show");
+    alertDiv.setAttribute("role","alert");
+    alertDiv.innerHTML = `Productos reiniciados con exito.
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>`;
 
-}
+    alertContainer.appendChild(alertDiv);
+};
 
 
 const localStorageProductsSave = (products) => {
@@ -144,6 +161,7 @@ return [];
 };
 
 const createProduct = () => {
+    objectError.textContent = "";
 
     if(productName.value.length === 0 || isNaN(productPrice.value) || productPrice.value === ""){
         objectError.textContent = "Por favor, ingrese parametros validos."
@@ -156,6 +174,15 @@ const createProduct = () => {
     products.push(userProduct);
     localStorageProductsSave(products);
     generateProduct(userProduct);
+
+    const alertDiv = document.createElement("div");
+    alertDiv.classList.add("alert", "alert-success", "alert-dismissible", "fade", "show");
+    alertDiv.setAttribute("role","alert");
+    alertDiv.innerHTML = `Producto "${userProduct.name} creado con exito.
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>`;
+
+    alertContainer.appendChild(alertDiv);
+
     productName.value = "";
     productPrice.value = "";
 };
